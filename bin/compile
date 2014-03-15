@@ -14,11 +14,9 @@ echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
-
 mkdir -p ffmpeg/bin
-mv ffmpeg ffmpeg/bin
-mv ffprobe ffmpeg/bin
+curl -L --silent $DOWNLOAD_URL | tar -C ffmpeg/bin -xz
+
 
 echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
